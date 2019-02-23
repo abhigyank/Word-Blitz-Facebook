@@ -1,3 +1,7 @@
+# Change these two as required.
+max_word_length = 6
+min_word_length = 4
+
 word_list = set([])
 f = open("words.txt", "r")
 
@@ -12,15 +16,16 @@ target = []
 for i in range(4):
     inp = raw_input()
     target.append(list(inp))
-cnt = 0
 
 def search(word, i, j , depth) :
     global cnt
-    if(depth>7): return
+
+    if(depth>max_word_length): return
+
     if(visited[i][j]): return
     visited[i][j] = 1
-    # print ''.join(word),
-    if(''.join(word) in word_list and len(word)>=4):
+
+    if(''.join(word) in word_list and len(word)>=min_word_length):
         print ''.join(word),
         cnt+=1
     if(j!=3):
@@ -49,4 +54,3 @@ for i in range(4):
             temp = [0]*4
             visited.append(temp)
         search(word, i,j,0)
-print cnt
