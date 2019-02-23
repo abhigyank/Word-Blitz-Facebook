@@ -18,8 +18,6 @@ for i in range(4):
     target.append(list(inp))
 
 def search(word, i, j , depth) :
-    global cnt
-
     if(depth>max_word_length): return
 
     if(visited[i][j]): return
@@ -27,7 +25,7 @@ def search(word, i, j , depth) :
 
     if(''.join(word) in word_list and len(word)>=min_word_length):
         print ''.join(word),
-        cnt+=1
+
     if(j!=3):
         search(word + [target[i][j+1]], i, j+1, depth+1)
     if(j!=0):
